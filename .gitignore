@@ -12,3 +12,5 @@ pom.xml.asc
 *.log
 .idea
 *.iml
+/scratch
+/.cpcache

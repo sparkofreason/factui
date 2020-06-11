@@ -5,13 +5,13 @@
    #?(:clj
            [clara.rules :as cr]
       :cljs [clara.rules :as cr :include-macros true])
-           [clojure.pprint :refer [pprint]]
+     [clojure.pprint :refer [pprint]]
    #?(:clj
            [clojure.test :as t :refer [deftest is testing run-tests]]
       :cljs [cljs.test :as t :refer-macros [deftest is testing run-tests]])
 
    #?(:cljs [factui.facts :as f :refer [Datom]] :clj [factui.facts :as f]))
-   #?(:clj (:import [factui.facts Datom])))
+  #?(:clj (:import [factui.facts Datom])))
 
 (def test-schema
   [{:db/ident :person/id
@@ -154,7 +154,7 @@
     (testing "multiple results"
       (let [r (api/query s all-people)]
         (is (= r #{[luke-id "Luke"]
-                 [alex-id "Alex"]}))))
+                   [alex-id "Alex"]}))))
     (testing "collection results"
       (let [r (api/query s all-names)]
         (is (= r #{"Luke" "Alex"}))))
@@ -259,8 +259,8 @@
   (let [s1 (api/transact-all base [{:person/name "Luke"
                                     :person/likes ["Beer" "Cheese"]}
                                    {:person/name "John"
-                                    :person/likes ["Champagne"]
-                                    }
+                                    :person/likes ["Champagne"]}
+
                                    {:person/name "Ed"}])
         result (api/query s1 query-with-maybe)]
     (is (= result #{["Luke" "Beer"]

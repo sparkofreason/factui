@@ -58,8 +58,8 @@
                                           ["test-cljs"]]
                               "bench" ["do" ["clean"]
                                        ["cljsbuild" "once" "test-bench"]
-                                       ["shell" "phantomjs" "target/test-bench.js"]]
-                              }}
+                                       ["shell" "phantomjs" "target/test-bench.js"]]}}
+
              :dev {:plugins [[lein-figwheel "0.5.12" :exclusions [org.clojure/clojurescript]]]
                    :dependencies [[figwheel-sidecar "0.5.12"]
                                   [rum "0.10.8"]]

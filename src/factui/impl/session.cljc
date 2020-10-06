@@ -77,6 +77,8 @@ the top-level API (true for the default implementation.)"} *store*)
     listener)
   (fire-activation! [listener activation resulting-operations]
     listener)
+  (activation-group-transition! [listener original-group new-group]
+    listener)
   (fire-rules! [listener node]
     listener)
   (to-persistent! [listener]

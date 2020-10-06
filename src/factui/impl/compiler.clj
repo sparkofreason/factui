@@ -41,6 +41,11 @@
                                               'factui.facts.Datom)
                              ::cs/s-expressions exprs}])))
 
+(defn compile-pred
+  [pred args]
+  (let [r [::cs/test-expr [:test (cons pred (map val args))]]]
+    r))
+
 (defn- compile-boolean
   "Given an operation & set of clauses, emit a conformed Clara boolean
    constraint"
@@ -147,12 +152,12 @@
 
     ;; Build conditions
     [::ds/expression-clause [::ds/data-pattern {::ds/terms terms}]] (compile-constraint terms)
-
+    [::ds/expression-clause [::ds/pred-expr [{::ds/pred pred ::ds/args args}]]] (compile-pred pred args)
     ;; Not-yet-implemented things
     [::ds/or-join-clause _] (throw (ex-info "'or-join' not yet implemented" {}))
     [::ds/not-join-clause _] (throw (ex-info "'not-join' not yet implemented" {}))
     [::ds/fn-expr _] (throw (ex-info "fn-expr not yet implemented" {}))
-    [::ds/pred-expr _] (throw (ex-info "pred-expr not yet implemented" {}))
+    #_#_[::ds/pred-expr _] (throw (ex-info "pred-expr not yet implemented" {}))
     [::ds/rule-expr _] (throw (ex-info "rule-expr not yet implemented" {}))
 
     :else n))
@@ -172,4 +177,3 @@
     (if (= in out)
       out
       (recur out compiler))))
-
